@@ -17,19 +17,23 @@ use App\Http\Controllers\LoanController;
 */
 
 Route::middleware(['auth'])->group(function () {
+    // user pages
     Route::get('/user/{id}', [UserController::class, 'show'])->name('profile');
     Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('editprofile');
     Route::post('/user/{id}', [UserController::class, 'update'])->name('updateprofile');
 
+    // dashboard
     Route::get('/dashboard/{id}', [UserController::class, 'dashboard'])->name('dashboard');
 
+    // product pages
     Route::get('/user/{id}/myproducts', [ProductController::class, 'myproducts'])->name('myproducts');
     Route::get('/user/{id}/browse', [ProductController::class, 'browse'])->name('browseitems');
     Route::get('/user/{id}/addproduct', [ProductController::class, 'addproduct'])->name('addproduct');
     Route::post('/user/{id}/myproducts', [ProductController::class, 'store'])->name('storeproduct');
-
     Route::get('/product/{product_id}', [ProductController::class, 'viewproduct'])->name('viewproduct');
+    Route::get('/user/{id}/myloans', [ProductController::class, 'myloans'])->name('myloans');
 
+    // loan pages
     Route::get('/product/{product_id}/loan', [LoanController::class, 'loanproduct'])->name('loanproduct');
     Route::post('/product/{product_id}', [LoanController::class, 'store'])->name('storeloan');
 

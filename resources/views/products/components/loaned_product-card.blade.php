@@ -8,11 +8,10 @@
                 <img class="productGridCard__image" src="{{$product->image}}" alt="{{$product->name}}" />
             </figure>
             <section class="productGridCard__infosection">
+                <p>Owner:</p><p class="productGridCard__owner">{{$product->username}}</p>
                 <p>Description:</p><p class="productGridCard__description">{{$product->description}}</p>
                 <p>Condition:</p><p class="productGridCard__condition">{{$product->condition}}</p>
             </section>
-            <div class="cr cr-bottom cr-right">Loaned out</div>
-            <p class="loaned">{{$product->loaned}}</p>
         </article>
     </a>
 </li>

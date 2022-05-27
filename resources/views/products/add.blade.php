@@ -27,9 +27,9 @@
             <section class="add-product__section">
                 <label for="condition"> Condition </label>
                 <select class="add-product__input" name="condition" id="condition">
-                    <option value="Nieuw"> Nieuw </option>
-                    <option value="Zo goed als nieuw"> Zo goed als nieuw </option>
-                    <option value="Gebruikt"> Gebruikt </option>
+                    <option value="New"> New </option>
+                    <option value="As good as new"> As good as new </option>
+                    <option value="Used"> Used </option>
                 </select>
             </section>
             <section class="add-product__section">

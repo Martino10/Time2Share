@@ -14,7 +14,7 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        $categories = ["Boeken", "Elektronica", "Speelgoed", "Sport", "Kleding", "Voeding", "School & Werk", "Huishouden", "Voertuig", "Tuin", "Kunst", "Huisdier", "Reizen", "Muziek"];
+        $categories = ["Literature", "Electronics", "Toys", "Sport", "Clothing", "Food & Nutrition", "School & Work", "Household", "Vehicles", "Gardening", "Art", "Pet", "Travel", "Music"];
         
         foreach($categories as $category) {
             DB::table('category')->insert([

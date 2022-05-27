@@ -5,11 +5,11 @@
 @section('content')
     @include('layouts.navigation')
     <section class="userprofile">
-        <h2 class="userprofile__header"> {{ $user->name }} </h2>
+        <h2 class="userprofile__header"> {{ $user->username }} </h2>
         <figure class="userprofile__frame">
             <img class="userprofile__image" src="{{ $user->picture }}">
         </figure>
-        <h3 class="userprofile__info--header"> About {{ $user->name }} </h3>
+        <h3 class="userprofile__info--header"> About {{ $user->username }} </h3>
         <form id="profileform" class="editprofile-form">
             @csrf
             <div class="userprofile__info--row">

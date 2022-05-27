@@ -3,6 +3,7 @@ var columns = document.getElementsByClassName("column_name");
 var buttons = document.getElementsByClassName("editrowbutton");
 var fullrows = document.getElementsByClassName("userprofile__info--row");
 const profile = document.getElementsByClassName("userprofile")[0];
+var descriptions = document.getElementsByClassName("productGridCard__description");
 
 function editRow(row, datavalue, updateroute, editroute) {
     // open edit mode on new row
@@ -32,6 +33,11 @@ function editRow(row, datavalue, updateroute, editroute) {
     }
 }
 
+function truncate(str, n){
+    // returns shortened description
+    return (str.length > n) ? str.substr(0, n-1) + '&hellip;' : str;
+};
+
 window.onload = function() {
     // change loaned values and hide ribbon if item isn't loaned out
     var loaned = document.getElementsByClassName("loaned");
@@ -41,6 +47,10 @@ window.onload = function() {
             ribbon[i].style.display = "none";
         }
         loaned[i].innerHTML = "";
+    }
+    for (var i = 0; i < descriptions.length; i++) {
+        string = descriptions[i].innerHTML;
+        descriptions[i].innerHTML = truncate(string, 100);
     }
 
 }

@@ -1,16 +1,16 @@
 @extends('default')
 @section('title')
-   {{$user->name}}'s profile
+   {{$user->username}}'s profile
 @endsection
 @section('content')
     @include('layouts.navigation')
     <section class="userprofile">
-        <h2 class="userprofile__header"> {{ $user->name }} </h2>
+        <h2 class="userprofile__header"> {{ $user->username }} </h2>
         <figure class="userprofile__frame">
             <img class="userprofile__image" src="{{ $user->picture }}">
         </figure>
         <div class="userprofile__rating"> {{ $user->rating }}</div>
-        <h3 class="userprofile__info--header"> About {{ $user->name }} </h3>
+        <h3 class="userprofile__info--header"> About {{ $user->username }} </h3>
         <section class="userprofile__info">
             <div class="userprofile__info--row">
                 <p>Email</p><p class="datarow">{{ $user->email }}</p>

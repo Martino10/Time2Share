@@ -14,7 +14,7 @@ class LoanController extends Controller
 {
     public function loanproduct($product_id) {
         $product = Product::where('id', '=', $product_id)->first();
-        $product = DB::select('select products.*, users.name as owner from products, users where products.id = ? and users.id = products.owner_id',[$product_id])[0];
+        $product = DB::select('select products.*, users.username as owner from products, users where products.id = ? and users.id = products.owner_id',[$product_id])[0];
         return view('products.loan', ['product' => $product]);
     }
 
