@@ -16,17 +16,10 @@ class ProductController extends Controller
         ]);
     }
 
-    public function myloans($id) {
-        $loanedProducts = Product::join('loans', 'products.id','=','loans.product_id')->join('users', 'owner_id','=','users.id')->get();
-        return view('products.myloans', [
-            'products' => $loanedProducts,
-        ]);
-    }
-
     public function viewproduct($product_id) {
         if (DB::table('loans')->where('product_id', $product_id)->exists()) {
             $product = DB::select('select products.*, users.username as owner, loans.deadline as deadline from products, users, loans where products.id = ? and loans.product_id = ? and users.id = products.owner_id',[$product_id, $product_id])[0];
-            $lener = DB::select('select users.name, loans.loaner_id from loans, users where loans.product_id = ? and users.id = loans.loaner_id',[$product_id])[0];
+            $lener = DB::select('select users.username, loans.loaner_id from loans, users where loans.product_id = ? and users.id = loans.loaner_id',[$product_id])[0];
             return view('products.view_loaned', [
                 'product' => $product,
                 'loaner' => $lener,

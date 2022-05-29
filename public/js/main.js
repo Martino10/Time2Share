@@ -48,6 +48,7 @@ window.onload = function() {
         }
         loaned[i].innerHTML = "";
     }
+
     for (var i = 0; i < descriptions.length; i++) {
         string = descriptions[i].innerHTML;
         descriptions[i].innerHTML = truncate(string, 100);

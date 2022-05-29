@@ -13,22 +13,22 @@
         </figure>
         <section class="productCard__infosection">
             <section class="productCard__info--row">
-                <p>Eigenaar:</p><p class="productCard__owner"><a href="{{ route('profile', ['id' => $product->owner_id]) }}">{{$product->owner}}</a></p>
+                <p>Owner:</p><p class="productCard__owner"><a href="{{ route('profile', ['id' => $product->owner_id]) }}">{{$product->owner}}</a></p>
             </section>
             <section class="productCard__info--row description--row">
-                <p>Beschrijving:</p><p class="productCard__description">{{$product->description}}</p>
+                <p>Description:</p><p class="productCard__description">{{$product->description}}</p>
             </section>
             <section class="productCard__info--row">
-                <p>Conditie:</p><p class="productCard__condition">{{$product->condition}}</p>
+                <p>Condition:</p><p class="productCard__condition">{{$product->condition}}</p>
             </section>
             <section class="productCard__info--row">
-                <p>Toegevoegd op:</p><p class="productCard__description">{{ date('d-m-Y', strtotime($product->created_at)) }}</p>
+                <p>Added on:</p><p class="productCard__description">{{ date('d-m-Y', strtotime($product->created_at)) }}</p>
             </section>
             <section class="productCard__info--row">
-                <p>Einde lening:</p><p class="productCard__deadline">{{ date('d-m-Y', strtotime($product->deadline)) }}</p>
+                <p>Return deadline:</p><p class="productCard__deadline">{{ date('d-m-Y', strtotime($product->deadline)) }}</p>
             </section>
             <section class="productCard__info--row">
-                <p>Uitgeleend aan:</p><p class="productCard__loaned_to"><a href="{{ route('profile', ['id' => $loaner->loaner_id]) }}">{{$loaner->name}}</a></p>
+                <p>Loaned to:</p><p class="productCard__loaned_to"><a href="{{ route('profile', ['id' => $loaner->loaner_id]) }}">{{$loaner->username}}</a></p>
             </section>
         </section>
     </article>

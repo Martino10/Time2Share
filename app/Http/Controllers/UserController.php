@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use DB;
+use \App\Models\Product;
+use \App\Models\Loan;
+
 class UserController extends Controller
 {
     public function show($id) {
@@ -19,6 +23,15 @@ class UserController extends Controller
     }
 
     public function dashboard($id) {
+        $returned_items = Product::join('loans', 'products.id','=','loans.product_id')->where('returned','=',1)->where('owner_id','=',$id)->get();
+        if (!$returned_items->isEmpty()) {
+            $product_ids = $returned_items->pluck('product_id')->all();
+            return view('accept_returned_items', [
+                'user' => \App\Models\User::find($id),
+                'returned_items' => $returned_items,
+                'product_ids_array' => $product_ids,
+            ]);
+        }
         return view('dashboard', [
             'user' => \App\Models\User::find($id),
         ]);

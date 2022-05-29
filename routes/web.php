@@ -31,10 +31,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user/{id}/addproduct', [ProductController::class, 'addproduct'])->name('addproduct');
     Route::post('/user/{id}/myproducts', [ProductController::class, 'store'])->name('storeproduct');
     Route::get('/product/{product_id}', [ProductController::class, 'viewproduct'])->name('viewproduct');
-    Route::get('/user/{id}/myloans', [ProductController::class, 'myloans'])->name('myloans');
 
     // loan pages
+    Route::get('/user/{id}/myloans', [LoanController::class, 'myloans'])->name('myloans');
     Route::get('/product/{product_id}/loan', [LoanController::class, 'loanproduct'])->name('loanproduct');
+    Route::post('/user/{id}/myloans', [LoanController::class, 'returnloan'])->name('returnloan');
+    Route::post('/dashboard/{id}', [LoanController::class, 'endloan'])->name('endloan');
     Route::post('/product/{product_id}', [LoanController::class, 'store'])->name('storeloan');
 
 });

@@ -1,6 +1,6 @@
-<li class="productGridCard" data-product-category={{$product->category}}>
-    <a href="/product/{{$product->id}}">
-        <article>
+<li class="productGridCard myLoanedItemCard" data-product-category={{$product->category}}>
+    <article>
+        <a href="/product/{{$product->product_id}}">
             <header>
                 <h2 class="productGridCard__heading"> {{$product->name}} </h2>
             </header>
@@ -11,7 +11,13 @@
                 <p>Owner:</p><p class="productGridCard__owner">{{$product->username}}</p>
                 <p>Description:</p><p class="productGridCard__description">{{$product->description}}</p>
                 <p>Condition:</p><p class="productGridCard__condition">{{$product->condition}}</p>
+                <p>Return before:</p><p class="productGridCard__deadline">{{ date('d-m-Y', strtotime($product->deadline)) }}</p>
             </section>
-        </article>
-    </a>
+        </a>
+        <section class="productGridCard__returnsection">
+            <button class="productGridCard__returnsection__button"> Return Item </button>
+            <p class="returnedText"> Item returned, awaiting confirmation from owner. </p>
+        </section>
+    </article>
 </li>
+<p class="getReturnedValue" style="display: none;">{{$product->returned}}</p>
