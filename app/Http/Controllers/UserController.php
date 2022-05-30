@@ -7,12 +7,16 @@ use Illuminate\Http\Request;
 use DB;
 use \App\Models\Product;
 use \App\Models\Loan;
+use \App\Models\Review;
 
 class UserController extends Controller
 {
     public function show($id) {
+        $reviews = Review::join('users', 'reviews.reviewer_id','=','users.id')->where('user_id','=',$id)->get();
+        // dd($reviews);
         return view('profile.show', [
             'user' => \App\Models\User::find($id),
+            'reviews' => $reviews,
         ]);
     }
 

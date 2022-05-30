@@ -22,6 +22,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('editprofile');
     Route::post('/user/{id}', [UserController::class, 'update'])->name('updateprofile');
 
+    // review pages
+    Route::post('/user/{id}/postreview', [ReviewController::class, 'store'])->name('postreview'); 
+
     // dashboard
     Route::get('/dashboard/{id}', [UserController::class, 'dashboard'])->name('dashboard');
 

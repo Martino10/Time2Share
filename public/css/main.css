@@ -27,7 +27,7 @@ nav {
 
 .userprofile__info, .editprofile-form {
     position: relative;
-    padding-bottom: 4rem;
+    padding-bottom: 1rem;
 }
 
 .userprofile__header {
@@ -195,6 +195,142 @@ nav {
     padding: 1%;
     border: 2px solid green;
     border-radius: 50%;
+}
+
+/* Reviews */
+
+.reviews__write {
+    width: 60%;
+    margin: 0 auto;
+    box-shadow: 0 0.2rem 1rem #bebcbc;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-areas: "header header" "label sliders";
+}
+
+.reviews__write__header {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    padding-top: 0.5rem;
+    grid-area: header;
+}
+
+.star_rating {
+    color: #7a7a7a;
+    font-size: 200% !important;
+}
+
+.star_rating::before {
+    content: "";
+    color: var(--transparent);
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+
+}
+
+.sliders {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    position: relative;
+}
+
+.slider {
+    opacity: 0;
+    width: 32.5%;
+    height: 40px;
+    position: absolute;
+    right: 30%;
+  }
+
+  .bubble {
+    background: rgb(59 130 246);
+    color: white;
+    padding: 4px 12px;
+    position: absolute;
+    border-radius: 4px;
+    left: 10%;
+  }
+  .bubble::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background: rgb(59 130 246);
+    top: 50%;
+    right: -1px;
+  }
+
+.reviews__written {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.review_box {
+    margin: 0 auto;
+    width: 90%;
+    height: fit-content;
+    box-shadow: 0 0.2rem 1rem #bebcbc;
+    border-radius: 0.2rem;
+    display: grid;
+    grid-template-areas: "profilepic username review_rating" "profilepic review_text review_text" "profilepic review_date review_date";
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr fit-content 1fr;
+    margin-top: 2rem;
+}
+
+.reviewer_figure {
+    width: 65%;
+    height: auto;
+    padding: 1rem;
+    grid-area: profilepic;
+    margin-left: 2rem;
+}
+
+.reviewer_figure__image {
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.reviewer_name {
+    grid-area: username;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    border-bottom: 2px solid #7a7a7a;
+    font-weight: bold;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+}
+
+.review_rating {
+    grid-area: review_rating;
+    border-bottom: 2px solid #7a7a7a;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-right: 1rem;
+    
+}
+
+.review_stars {
+    color: rgb(59 130 246);
+}
+
+.review_text {
+    grid-area: review_text;
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+}
+
+.review_date {
+    grid-area: review_date;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding: 0.5rem;
 }
 
 /* Dashboard */
