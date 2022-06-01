@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use DB;
+use \App\Models\User;
 use \App\Models\Product;
 use \App\Models\Loan;
 use \App\Models\Review;
@@ -13,9 +14,16 @@ class UserController extends Controller
 {
     public function show($id) {
         $reviews = Review::join('users', 'reviews.reviewer_id','=','users.id')->where('user_id','=',$id)->get();
-        // dd($reviews);
+
+        // get user rating
+        $user = User::find($id);
+        $user_rating = Review::where('user_id','=', $id)->avg('review_rating');
+        if ($user_rating != null) {
+            $user->update(['rating' => $user_rating]);
+        }
+
         return view('profile.show', [
-            'user' => \App\Models\User::find($id),
+            'user' => $user,
             'reviews' => $reviews,
         ]);
     }

@@ -1,6 +1,6 @@
 @extends('default')
 @section('title')
-   {{$user->name}}'s profile
+   {{$user->username}}'s profile
 @endsection
 @section('content')
     @include('layouts.navigation')
@@ -9,6 +9,7 @@
         <figure class="userprofile__frame">
             <img class="userprofile__image" src="{{ $user->picture }}">
         </figure>
+        <div class="userprofile__rating"> {{ $user->rating }}</div>
         <h3 class="userprofile__info--header"> About {{ $user->username }} </h3>
         <form id="profileform" class="editprofile-form">
             @csrf
@@ -29,4 +30,32 @@
             </div>
         </form>
     </section>
+    <script type="text/javascript">
+        function setReviewStars(ratings) {
+            for (let i = 0; i < ratings.length; i++) {
+                var rating = ratings[i].innerHTML;
+                ratings[i].innerHTML = '';
+                var fullStars = Math.floor(rating);
+                var midStarFilling = Math.round((rating % 1) * 100 * 10) / 10;
+                var emptyStars = 5 - Math.ceil(rating);
+
+                var fullStar = `<span class="fa fa-star star_rating fullStar"></span>`;
+                var emptyStar = `<span class="fa fa-star star_rating emptyStar"></span>`;
+                if (midStarFilling > 0) {
+                    ratings[i].innerHTML = `${fullStar.repeat(fullStars)}` + `<span class="fa fa-star star_rating midwayStar"></span>` + `${emptyStar.repeat(emptyStars)}`;
+                    var midwayStars = document.getElementsByClassName('midwayStar');
+                    for (let i = 0; i < midwayStars.length; i++) {
+                        var gradient = `linear-gradient(to right, rgb(59 130 246) 0% ${midStarFilling}%, #7a7a7a ${midStarFilling}%)`;
+                        midwayStars[i].style.setProperty('--transparent', 'transparent');
+                        midwayStars[i].style.setProperty('--gradient', gradient);
+                    }
+                } else {
+                    ratings[i].innerHTML = `${fullStar.repeat(fullStars)}` + `${emptyStar.repeat(emptyStars)}`;
+                }
+ 
+            }
+        }
+        var userRating = document.getElementsByClassName('userprofile__rating');
+        setReviewStars(userRating);
+    </script>
 @endsection

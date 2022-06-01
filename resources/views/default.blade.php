@@ -9,7 +9,7 @@
     <script src="/js/main.js" defer></script>
     <script src="/js/app.js" defer></script>
     <script src="https://momentjs.com/downloads/moment.min.js"></script>
-    <link href="https://css.gg/css?=|check|close|pen|add-r" rel="stylesheet">
+    <link href="https://css.gg/css?=|check|close|pen|add-r|shield" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     @include('components.routes')
     <title>@yield('title')</title>

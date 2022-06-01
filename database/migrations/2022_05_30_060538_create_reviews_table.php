@@ -15,7 +15,7 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('posted_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->float('review_rating');
             $table->unsignedBigInteger('reviewer_id');
             $table->foreign('reviewer_id')->references('id')->on('users');

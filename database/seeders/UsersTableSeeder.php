@@ -14,6 +14,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+
         DB::table('users')->insert([
             'username' => "MartinK",
             'email' => "martin.krikke10@gmail.com",
@@ -23,7 +24,7 @@ class UsersTableSeeder extends Seeder
             'birthday' => "2000-4-19",
             'picture' => "/img/martin.png",
             'phonenumber' => "0612597207",
-            'rating' => 4.2,
+            'admin' => 1,
         ]);
 
         DB::table('users')->insert([
@@ -34,7 +35,6 @@ class UsersTableSeeder extends Seeder
             'place' => "Leiden",
             'birthday' => "2000-8-25",
             'picture' => "/img/julian.png",
-            'rating' => 3.6,
         ]);
 
     }

@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->date('birthday');
             $table->string('picture')->default('/img/default.png');
             $table->string('phonenumber')->nullable();
-            $table->unsignedDecimal('rating',2,1)->nullable();
+            $table->float('rating')->default(0);
             $table->boolean('blocked')->default(false);
             $table->rememberToken();
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
