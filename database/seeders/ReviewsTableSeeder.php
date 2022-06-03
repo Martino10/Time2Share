@@ -25,7 +25,7 @@ class ReviewsTableSeeder extends Seeder
             'user_id' => 2,
             'review_rating' => 3.0,
             'reviewer_id' => 1,
-            'review_text' => "Ja mooie goos, vraagt alleen wel telkens of ik een halve gram in wil leggen.",
+            'review_text' => "Ja goeie uitlener, heeft helaas alleen niet veel producten te leen.",
         ]);
     }
 }

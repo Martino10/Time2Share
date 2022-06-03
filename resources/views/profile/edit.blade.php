@@ -28,6 +28,9 @@
             <div class="userprofile__info--row">
                 <p>Birthday</p><p>{{ date('d-m-Y', strtotime($user->birthday)) }}</p>
             </div>
+            <div class="userprofile__info--row">
+                <p>Member since</p><p class="datarow">{{ date('d-m-Y', strtotime($user->created_at)) }}</p>
+            </div>
         </form>
     </section>
     <script type="text/javascript">

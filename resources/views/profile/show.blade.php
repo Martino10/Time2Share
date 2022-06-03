@@ -103,7 +103,7 @@
         });
 
         function setStars(range, bubble) {
-            var val = range.value;
+            var val = Number(range.value).toFixed(1);
             const min = range.min ? range.min : 0;
             const max = range.max ? range.max : 100;
             var newVal = Number(((val - min) * 100) / (max - min));

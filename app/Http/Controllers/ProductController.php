@@ -74,10 +74,11 @@ class ProductController extends Controller
     public function search(Request $request) {
         $q = $request['q'];
         $product = Product::where('name','LIKE','%'.$q.'%')->where('owner_id','!=',Auth::user()->id)->join('users', 'products.owner_id','=','users.id')->select('products.*','users.username as owner')->get();
-
+        $categories = DB::table('category')->get();
         if(count($product) > 0) {
             return view('products.browse', [
                 'products' => $product,
+                'categories' => $categories,
             ]);
         }
             
@@ -91,7 +92,6 @@ class ProductController extends Controller
 
     public function filter(Request $request) {
         $category = $request['category'];
-        dd($category);
         $product = Product::where('category','=',$category);
         if(count($product) > 0) {
             return view('products.browse', [

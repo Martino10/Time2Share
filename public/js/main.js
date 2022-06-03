@@ -53,7 +53,7 @@ window.onload = function() {
 
     for (var i = 0; i < descriptions.length; i++) {
         string = descriptions[i].innerHTML;
-        descriptions[i].innerHTML = truncate(string, 100);
+        descriptions[i].innerHTML = truncate(string, 80);
     }
 
 }
