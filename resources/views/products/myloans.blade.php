@@ -10,6 +10,7 @@
             @include('products.components.loaned_product-card')
         @endforeach
     </ul>
+    <p class="noloans" style="display: none"> You currently haven't loaned any products. </p>
     @foreach($products as $product)
         @include('products.components.return_popup')
     @endforeach
@@ -44,6 +45,11 @@
                     currentPopup.style.display = "none";
                 }
             }
+        }
+        var amount_of_loans = document.getElementsByClassName('myLoanedItemCard').length;
+        var noloans_text = document.getElementsByClassName('noloans')[0];
+        if (amount_of_loans == 0) {
+            noloans_text.style.display = '';
         }
 
     </script>

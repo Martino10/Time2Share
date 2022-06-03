@@ -35,6 +35,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user/{id}/addproduct', [ProductController::class, 'addproduct'])->name('addproduct');
     Route::post('/user/{id}/myproducts', [ProductController::class, 'store'])->name('storeproduct');
     Route::get('/product/{product_id}', [ProductController::class, 'viewproduct'])->name('viewproduct');
+    Route::post('/browse/search', [ProductController::class, 'search'])->name('searchproducts');
+    Route::post('/browse/filter', [ProductController::class, 'filter'])->name('filterproducts');
 
     // loan pages
     Route::get('/user/{id}/myloans', [LoanController::class, 'myloans'])->name('myloans');
@@ -42,6 +44,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/user/{id}/myloans', [LoanController::class, 'returnloan'])->name('returnloan');
     Route::post('/dashboard/{id}', [LoanController::class, 'endloan'])->name('endloan');
     Route::post('/product/{product_id}', [LoanController::class, 'store'])->name('storeloan');
+
+    // Admin pages
+    Route::get('/user/{id}/admin',[UserController::class, 'admin'])->name('adminpage');
+    Route::post('/user/{id}/admin/blockuser',[UserController::class, 'blockuser'])->name('blockuser');
+    Route::post('/user/{id}/admin/unblockuser',[UserController::class, 'unblockuser'])->name('unblockuser');
+    Route::post('/user/{id}/admin/banuser',[UserController::class, 'banuser'])->name('banuser');
+    Route::post('/admin/search', [UserController::class, 'search'])->name('searchusers');
 
 });
 

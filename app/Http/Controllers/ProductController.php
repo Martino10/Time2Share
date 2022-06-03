@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 use \App\Models\Product;
 use \App\Models\User;
 use \App\Models\Loan;
@@ -35,9 +36,11 @@ class ProductController extends Controller
     }
 
     public function browse($id) {
-        $products = DB::select('select products.*, users.username as owner from products, users where products.owner_id = users.id and users.id != ?',[$id]);
+        $products = DB::select('select products.*, users.username as owner from products, users where products.owner_id = users.id and users.id != ? and users.blocked != 1',[$id]);
+        $categories = DB::table('category')->get();
         return view('products.browse', [
             'products' => $products,
+            'categories' => $categories,
         ]);
     }
 
@@ -65,6 +68,41 @@ class ProductController extends Controller
         }
         catch(Exception $e) {
             return redirect()->route('addproduct', ['id' => $id]);
+        }
+    }
+
+    public function search(Request $request) {
+        $q = $request['q'];
+        $product = Product::where('name','LIKE','%'.$q.'%')->where('owner_id','!=',Auth::user()->id)->join('users', 'products.owner_id','=','users.id')->select('products.*','users.username as owner')->get();
+
+        if(count($product) > 0) {
+            return view('products.browse', [
+                'products' => $product,
+            ]);
+        }
+            
+        else {
+            return redirect()->route('browseitems', [
+                'id' => Auth::user()->id,
+            ]);
+        }
+
+    }
+
+    public function filter(Request $request) {
+        $category = $request['category'];
+        dd($category);
+        $product = Product::where('category','=',$category);
+        if(count($product) > 0) {
+            return view('products.browse', [
+                'products' => $product,
+            ]);
+        }
+            
+        else {
+            return redirect()->route('browseitems', [
+                'id' => Auth::user()->id,
+            ]);
         }
     }
 }

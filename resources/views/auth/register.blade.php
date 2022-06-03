@@ -1,9 +1,7 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <img src="/img/logo.png" class="w-20 h-20" />
-            </a>
+            <h3 class="welcome-title">Time2Share</h3>
         </x-slot>
 
         <!-- Validation Errors -->
@@ -85,3 +83,12 @@
         </form>
     </x-auth-card>
 </x-guest-layout>
+<style>
+    .welcome-title {
+        font-weight: bold !important;
+        font-size: 300% !important;
+        font-family: 'Courier New', Courier, monospace;
+        text-align: center;
+        margin-top: 10%;
+    }
+</style>

@@ -10,12 +10,6 @@
                     </a>
                 </div>
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard', ['id' => Auth::user()->id]) }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div>
                 <x-nav-link class="nav-title" href="{{ route('dashboard', ['id' => Auth::user()->id]) }}">Time2Share</x-nav-link>
             </div>
 
@@ -35,6 +29,11 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        <!-- To Admin Page -->
+                        <x-dropdown-link href="{{ route('adminpage', ['id' => Auth::user()->id]) }}" id="adminpage_link" style="display: none">
+                            <div>Admin Page</div>
+                        </x-dropdown-link>
+
                         <!-- To User Products -->
                         <x-dropdown-link href="{{ route('myproducts', ['id' => Auth::user()->id]) }}">
                             <div>Your Items</div>
@@ -106,3 +105,9 @@
         </div>
     </div>
 </nav>
+<script type="text/javascript">
+    var adminpage_link = document.getElementById('adminpage_link');
+    if ({{Auth::user()->admin}}) {
+        adminpage_link.style.display = '';
+    }
+</script>
